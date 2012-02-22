@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Specification-Title: zk-on-heroku
+Specification-Version: 1.0-SNAPSHOT
+Implementation-Title: com.hiroxpepe
+Implementation-Version: 1.0-SNAPSHOT
