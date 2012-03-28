@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/dependency/jetty-runner.jar --port $PORT exam-blogpub-webapp/target/*.war
+web: java $JAVA_OPTS -jar target/dependency/jetty-runner.jar --port $PORT exmp-blogpub-webapp/target/*.war
