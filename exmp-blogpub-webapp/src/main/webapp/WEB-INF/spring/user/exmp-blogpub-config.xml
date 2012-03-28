@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+ 
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- service object -->
+    
+    <bean id="entryService"
+        class="org.examproject.blogpub.service.DefaultEntryService">
+        <constructor-arg name="saveEntryClosureId" value="saveEntryClosure" />
+        <constructor-arg name="findAllEntryFactoryId" value="findAllEntryFactory" />
+    </bean>
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- functor object -->
+    
+    <bean id="saveEntryClosure"
+        class="org.examproject.blogpub.functor.AbderaSaveEntryClosure">
+    </bean>
+    
+    <bean id="findAllEntryFactory"
+        class="org.examproject.blogpub.functor.AbderaFindAllEntryFactory"
+        scope="prototype">
+    </bean>
+ 
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- data transfer object -->
+    
+    <bean id="entryDto"
+        class="org.examproject.blogpub.dto.DefaultEntryDto"
+        scope="prototype">
+    </bean>
+    
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- response object -->
+    
+    <bean id="responseEntry"
+        class="org.examproject.blogpub.response.Entry"
+        scope="prototype">
+    </bean>
+ 
+    <bean id="responseResult"
+        class="org.examproject.blogpub.response.Result"
+        scope="prototype">
+    </bean>
+ 
+</beans>
