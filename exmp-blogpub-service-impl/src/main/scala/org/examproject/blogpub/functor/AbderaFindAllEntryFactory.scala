@@ -33,22 +33,27 @@ import org.examproject.blogpub.dto.EntryDto
 
 import scala.collection.JavaConversions._
 
+/**
+ * @author hiroxpepe
+ */
 class AbderaFindAllEntryFactory(
     val feedUrl: String
 ) extends Factory {
 
-    private val LOG: Logger = LoggerFactory.getLogger(classOf[AbderaFindAllEntryFactory])
+    private val LOG: Logger = LoggerFactory.getLogger(
+        classOf[AbderaFindAllEntryFactory]
+    )
     
     @Inject
     private val context: ApplicationContext = null
     
-    override def create(): Object  = {
+    override def create(): Object = {
         LOG.info("called.")
         try {
             return findAll()
         } catch {
             case e: Exception => {
-                LOG.error("Exception occurred. " + e.getMessage())
+                LOG.error("Exception occurred." + e.getMessage())
                 throw new RuntimeException(e)
             }
         }
@@ -82,7 +87,7 @@ class AbderaFindAllEntryFactory(
                 ).asInstanceOf[EntryDto]
                 resultList.add(entrydto)
             }
-        )        
+        )
         return resultList
     }
     

@@ -8,7 +8,7 @@
         <fmt:message key="label.entry" />
     </h4>
     
-    <table class="entry-table"> 
+    <table class="entry-table">
         <tr>
             <td class="label-td">
                 <label for="entry_title">
@@ -17,8 +17,8 @@
             </td>
             <td class="input-td" colspan=3>
                 <form:input 
-                    id="entry_title" 
-                    path="title" 
+                    id="entry_title"
+                    path="title"
                 />
             </td>
         </tr>
@@ -30,8 +30,8 @@
             </td>
             <td class="input-td" colspan=3>
                 <form:textarea 
-                    id="entry_content" 
-                    path="content" 
+                    id="entry_content"
+                    path="content"
                 />
             </td>
         </tr>   
@@ -43,9 +43,9 @@
             </td>
             <td class="input-td">
                 <form:select 
-                    id="entry_category" 
-                    path="category" 
-                    items="${categoryList}" 
+                    id="entry_category"
+                    path="category"
+                    items="${categoryList}"
                 />
             </td>
             <td class="label-td">
@@ -55,19 +55,19 @@
             </td>
             <td class="input-td">
                 <form:input 
-                    id="entry_tags" 
-                    path="tags" 
+                    id="entry_tags"
+                    path="tags"
                 />
             </td>
         </tr>
     </table>
-    <div class="entry-command-block"> 
+    <div class="entry-command-block">
         <input 
-            id="post-button" 
-            class="command-button" 
-            type="button" 
+            id="post-button"
+            class="command-button"
+            type="button"
             value="<fmt:message key="button.save" />"
         />
     </div>
 </div>
-            
+

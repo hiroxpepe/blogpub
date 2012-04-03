@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>                        
-            
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <div class="tab-content">
     
     <ul>
@@ -11,12 +11,12 @@
     
     <div id="tab1" class="tab">
         <div 
-            id="entry-list-block" 
+            id="entry-list-block"
             class="entry-list-content">
         </div>
     </div>
     
-    <div id="tab2" class="tab">   
+    <div id="tab2" class="tab">
         <div class="setting-content">
             <table class="setting-table">
                 <tr>
@@ -90,15 +90,13 @@
                     </td>
                 </tr>
             </table>
-            <div class="setting-command-block"> 
-                <input id="setting-button" 
-                       class="command-button" 
+            <div class="setting-command-block">
+                <input id="setting-button"
+                       class="command-button"
                        type="button" 
                        value="<fmt:message key="button.setting" />"
                  />
             </div>
         </div>
     </div>
-</div>   
-                    
-                    
+</div>

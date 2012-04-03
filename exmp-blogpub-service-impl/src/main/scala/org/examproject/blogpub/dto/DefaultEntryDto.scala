@@ -19,6 +19,9 @@ import org.springframework.stereotype.Component;
 
 import reflect.BeanProperty
 
+/**
+ * @author hiroxpepe
+ */
 @Component(value="entryDto")
 @Scope(value="prototype")
 class DefaultEntryDto(

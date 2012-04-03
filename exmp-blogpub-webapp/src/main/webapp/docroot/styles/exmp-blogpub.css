@@ -288,7 +288,7 @@ div.index-content {
 /* ****************************************************************************
  * define the appearance of the entry content.
  */
-div.entry-content {    
+div.entry-content {
     margin: 1em 1em 1em 1em;
     padding: 0.25em 1em 1em 1em;
     border: 1px solid silver;
@@ -405,13 +405,11 @@ div.tab-content {
  * define the appearance of the message block.
  */
 #message-block {
-    margin: 0.5em 1em 0.5em 1em;
-    padding: 0.25em;
-    border-radius: 5px;
-    text-align: right;
 }
     #message-block.show {
         min-height: 50px;
+        text-align: right;
+        border-radius: 5px;
     }
     #message-block img {
         cursor: pointer;

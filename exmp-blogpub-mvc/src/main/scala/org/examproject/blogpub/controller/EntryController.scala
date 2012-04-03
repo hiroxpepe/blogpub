@@ -126,7 +126,7 @@ class EntryController {
         var result: Result = null;
         try {
             // get the result object 
-            result = context.getBean(classOf[Result]); 
+            result = context.getBean(classOf[Result]);
             
             // map the DTO object using the form objects data.
             val entryDto: EntryDto = mapEntryFormToEntryDto(entryForm)
@@ -140,9 +140,6 @@ class EntryController {
             // add to the result object.
             addResultFromEntryDtoList(entryDtoList, result)
             
-            // TODO: add masseges..?
-            // model.addAttribute("statusMessageKey", "entry.form.msg.success");
-            
             // return the result object to HTML page. 
             // this will be converted into JSON.
             return result
@@ -150,7 +147,7 @@ class EntryController {
         } catch {
             case e: Exception => {
               LOG.error(e.getMessage())
-
+              
               // notify the occurrence of errors to the HTML page.
               result.setIsError(true)
               return result
@@ -189,14 +186,14 @@ class EntryController {
             // add to the result object.
             addResultFromEntryDtoList(entryDtoList, result)
             
-            // return the result object to HTML page. 
+            // return the result object to HTML page.
             // this will be converted into JSON.
             return result;
             
         } catch {
             case e: Exception => {
                 LOG.error(e.getMessage())
-            
+                
                 // notify the occurrence of errors to the HTML page.
                 result.setIsError(true)
                 return result;

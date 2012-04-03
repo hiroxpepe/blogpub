@@ -36,6 +36,9 @@ import org.springframework.context.ApplicationContext
 
 import org.examproject.blogpub.dto.EntryDto
 
+/**
+ * @author hiroxpepe
+ */
 class AbderaSaveEntryClosure extends Closure {
 
     private val LOG: Logger = LoggerFactory.getLogger(classOf[AbderaSaveEntryClosure])
@@ -50,7 +53,7 @@ class AbderaSaveEntryClosure extends Closure {
             save(entryDto)
         } catch {
             case e: Exception => {
-                LOG.error("Exception occurred. " + e.getMessage())
+                LOG.error("Exception occurred." + e.getMessage())
                 throw new RuntimeException(e)
             }
         }
@@ -58,7 +61,7 @@ class AbderaSaveEntryClosure extends Closure {
     
     private def save(entryDto: EntryDto) = {
         try {
-            // Set the URI of the Introspection document
+            // set the URI of the introspection document
             val start: String = entryDto.getUrl()
 
             val abdera: Abdera = new Abdera()
@@ -66,7 +69,7 @@ class AbderaSaveEntryClosure extends Closure {
             
             LOG.debug("create factory.")
 
-            // Create the entry that will be posted
+            // create the entry that will be posted
             val entry: Entry = factory.newEntry()
             entry.setId(FOMHelper.generateUuid())
             entry.setUpdated(new java.util.Date())
@@ -91,13 +94,13 @@ class AbderaSaveEntryClosure extends Closure {
                 entry.addCategory(tag)
             }
 
-            // Initialize the client
+            // initialize the client
             val httpClient: HttpClient = new HttpClient()
             val abderaClient: AbderaClient = new AbderaClient(abdera, httpClient)
             
             LOG.debug("create abderaClient.")
 
-            // Set the authentication credentials
+            // set the authentication credentials
             abderaClient.addCredentials(
                 start,
                 null,
@@ -110,14 +113,14 @@ class AbderaSaveEntryClosure extends Closure {
             
             LOG.debug("authentication abderaClient.")
 
-            // Get the service document
+            // get the service document
             val document: Document[Service] = abderaClient.get(start).getDocument()
             
             LOG.debug("abderaClient getDocument() : " + document.toString())
             
             val service: Service = document.getRoot()
 
-            // Get the workspace
+            // get the workspace
             val workspace: Workspace = service.getWorkspace(entryDto.getBlog())
 
             val collection: Collection = workspace.getCollections().get(0)
@@ -125,7 +128,7 @@ class AbderaSaveEntryClosure extends Closure {
 
             LOG.debug("uri : " + uri)
             
-            // Post the entry to the collection
+            // post the entry to the collection
             val response: Response = abderaClient.post(
                 uri,
                 entry
@@ -133,7 +136,7 @@ class AbderaSaveEntryClosure extends Closure {
 
             LOG.debug("post entry.")
             
-            // Check the result
+            // check the result
             if (response.getStatus() == 201) {
                 LOG.info("success.")
             }

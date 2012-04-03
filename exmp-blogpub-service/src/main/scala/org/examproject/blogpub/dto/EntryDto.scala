@@ -16,6 +16,9 @@ package org.examproject.blogpub.dto
 
 import scala.reflect.BeanProperty
 
+/**
+ * @author hiroxpepe
+ */
 trait EntryDto {
     
     @BeanProperty
@@ -35,7 +38,7 @@ trait EntryDto {
     
     @BeanProperty
     var scheme: String
-
+    
     @BeanProperty
     var author: String
     

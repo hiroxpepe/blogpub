@@ -10,21 +10,28 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 
-package org.examproject.blogpub.service
-
-import java.util.List
-
-import org.examproject.blogpub.dto.EntryDto
-
+///////////////////////////////////////////////////////////////////////////////
 /**
+ * a viewhelper class of the application.
+ * 
  * @author hiroxpepe
  */
-trait EntryService {
-   
-   def saveEntry(entryDto: EntryDto)
-   
-   def findAllEntry(feedUrl: String): List[EntryDto]
-
+exmp.blogpub.core.ViewHelper = {
+    
+    ///////////////////////////////////////////////////////////////////////////
+    // public methods
+    
+    // update the HTML table of the entry list. 
+    updateEntryList: function(obj) {
+        
+        var transformer = exmp.blogpub.functor.htmltag.EntryListTransformer;
+        
+        $("#entry-list-block").html(
+            transformer.transform(
+                obj
+            )
+        );
+    }
 }

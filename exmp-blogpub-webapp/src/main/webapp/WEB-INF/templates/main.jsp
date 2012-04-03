@@ -7,16 +7,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="shortcut icon" href="<c:url value="/docroot/images/icon.ico"/>" />
-        <link rel="stylesheet" type="text/css" href="<c:url value="/docroot/styles/jquery-ui.custom.css.css"/>" />
-        <link rel="stylesheet" type="text/css" href="<c:url value="/docroot/styles/blogpub-examproject.css"/>" />
-        <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/prototype.js"/>"></script>
+        <link rel="stylesheet" type="text/css" href="<c:url value="/docroot/styles/exmp-blogpub.css"/>" />
         <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/jquery.js"/>"></script>
         <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/jquery-ui.custom.min.js"/>"></script>
         <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/jquery.json.js"/>"></script>
         <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/jquery.escapeHTML.js"/>"></script>
-        <script language="javascript" type="text/javascript" src="http://www.google.com/jsapi"></script>
-        <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/blogpub-examproject.js"/>"></script>
-
+        <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/exmp-blogpub.min.js"/>"></script>
+        
         <title><fmt:message key="site.title" /></title>
     </head>
     <body>

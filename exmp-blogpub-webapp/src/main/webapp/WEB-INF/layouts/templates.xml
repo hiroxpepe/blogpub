@@ -8,14 +8,14 @@
     <!-- define the structure of the main template is divided into regions.            -->
     <!-- ============================================================================= -->
 
-	<!-- default main template -->
-	<definition name="main-template" template="/WEB-INF/templates/main.jsp">
-		<put-attribute name="header" value="/WEB-INF/templates/header.jsp" />
+    <!-- default main template -->
+    <definition name="main-template" template="/WEB-INF/templates/main.jsp">
+        <put-attribute name="header" value="/WEB-INF/templates/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/templates/menu.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/templates/sidebar.jsp" />
-		<put-attribute name="content" value="/WEB-INF/templates/blank.jsp" />
+        <put-attribute name="sidebar" value="/WEB-INF/templates/sidebar.jsp" />
+        <put-attribute name="content" value="/WEB-INF/templates/blank.jsp" />
         <put-attribute name="footer" value="/WEB-INF/templates/footer.jsp" />
-	</definition>
+    </definition>
 
     <!-- ============================================================================= -->
     <!-- replace the region of the contents for the request URL.                       -->

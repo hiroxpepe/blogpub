@@ -10,21 +10,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 
-package org.examproject.blogpub.service
-
-import java.util.List
-
-import org.examproject.blogpub.dto.EntryDto
-
+///////////////////////////////////////////////////////////////////////////////
 /**
+ * called the main entry.
+ * 
  * @author hiroxpepe
  */
-trait EntryService {
-   
-   def saveEntry(entryDto: EntryDto)
-   
-   def findAllEntry(feedUrl: String): List[EntryDto]
-
-}
+new exmp.blogpub.core.Application(
+    this
+);

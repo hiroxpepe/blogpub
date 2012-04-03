@@ -8,20 +8,20 @@
     <div id="message-block">
     </div>
     
-    <!-- in this form, an HTTP POST is not used. -->
+    <!-- in this form, the normal Http post is not used. -->
     <!-- all of the data will request using Ajax. -->
     <form:form id="entry-form" commandName="entryForm">
         <form:hidden path="id" />
         
         <!-- insert the entry content template. -->
         <tiles:insertTemplate 
-            template="/WEB-INF/views/entry/entryContent.jsp" 
+            template="/WEB-INF/views/entry/entryContent.jsp"
         />
         
         <!-- insert the tab content template. -->
         <tiles:insertTemplate 
-            template="/WEB-INF/views/entry/tabContent.jsp" 
+            template="/WEB-INF/views/entry/tabContent.jsp"
         />
-                    
+        
     </form:form>
 </div>
