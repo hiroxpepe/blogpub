@@ -37,7 +37,7 @@ exmp.blogpub.functor.request.SettingClosure = {
             message: "please wait..."
         });
         
-        // create a ajax object.
+        // create an ajax object.
         new $.ajax({
             url: "setting.html",
             type: "POST",

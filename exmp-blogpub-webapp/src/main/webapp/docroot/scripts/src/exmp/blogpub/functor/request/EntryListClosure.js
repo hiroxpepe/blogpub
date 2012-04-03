@@ -37,7 +37,7 @@ exmp.blogpub.functor.request.EntryListClosure = {
             null
         );
             
-        // create a ajax object.
+        // create an ajax object.
         new $.ajax({
             url: "list.html",
             type: "POST",
