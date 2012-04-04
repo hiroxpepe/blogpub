@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package org.examproject.blogpub.controller;
+package org.examproject.blogpub.controller
 
 import java.util.ArrayList
 import java.util.List

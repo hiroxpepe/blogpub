@@ -14,8 +14,8 @@
 
 package org.examproject.blogpub.form
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Scope
+import org.springframework.stereotype.Component
 
 import reflect.BeanProperty
 

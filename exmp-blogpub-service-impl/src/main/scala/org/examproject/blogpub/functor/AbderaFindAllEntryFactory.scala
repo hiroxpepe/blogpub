@@ -19,11 +19,11 @@ import java.util.ArrayList
 import java.util.List
 import javax.inject.Inject
 
-import org.apache.abdera.Abdera;
-import org.apache.abdera.model.Document;
-import org.apache.abdera.model.Entry;
-import org.apache.abdera.model.Feed;
-import org.apache.abdera.parser.Parser;
+import org.apache.abdera.Abdera
+import org.apache.abdera.model.Document
+import org.apache.abdera.model.Entry
+import org.apache.abdera.model.Feed
+import org.apache.abdera.parser.Parser
 import org.apache.commons.collections.Factory
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -69,8 +69,8 @@ class AbderaFindAllEntryFactory(
         val resultList: List[EntryDto] = new ArrayList[EntryDto]()
         entryList.foreach(
             (entry: Entry) => {
-                LOG.debug("title: " + entry.getTitle());
-                LOG.debug("content: " + entry.getContent());
+                LOG.debug("title: " + entry.getTitle())
+                LOG.debug("content: " + entry.getContent())
                 val entrydto: EntryDto = context.getBean(
                     "entryDto",
                     new Integer(1),

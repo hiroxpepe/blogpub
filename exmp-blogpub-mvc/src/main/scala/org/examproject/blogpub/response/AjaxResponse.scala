@@ -12,9 +12,9 @@
  * limitations under the License.
  */
 
-package org.examproject.blogpub.response;
+package org.examproject.blogpub.response
 
-import java.util.List;
+import java.util.List
 
 import reflect.BeanProperty
 
