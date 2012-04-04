@@ -28,7 +28,10 @@ exmp.blogpub.core.Controller = window; {
      * this method should be called.
      */
     exmp.blogpub.core.Controller.init = function() {
-        exmp.blogpub.core.Controller._initializeComponent();
+        
+        var controller = exmp.blogpub.core.Controller;
+        
+        controller._initializeComponent();
     }
     
     ///////////////////////////////////////////////////////////////////////////
@@ -39,8 +42,12 @@ exmp.blogpub.core.Controller = window; {
      * the button of post is clicked.
      */
     exmp.blogpub.core.Controller._postButtonOnClick = function() {
-        exmp.blogpub.functor.request.EntryPostClosure.execute(
-            exmp.blogpub.functor.value.EntryFactory.create()
+        
+        var entryPostClosure = exmp.blogpub.functor.request.EntryPostClosure;
+        var entryFactory = exmp.blogpub.functor.value.EntryFactory;
+        
+        entryPostClosure.execute(
+            entryFactory.create()
         );
     }
     
@@ -49,8 +56,12 @@ exmp.blogpub.core.Controller = window; {
      * the button of setting is clicked.
      */
     exmp.blogpub.core.Controller._settingButtonOnClick = function() {
-        exmp.blogpub.functor.request.SettingClosure.execute(
-            exmp.blogpub.functor.value.EntryFactory.create()
+        
+        var settingClosure = exmp.blogpub.functor.request.SettingClosure;
+        var entryFactory = exmp.blogpub.functor.value.EntryFactory;
+        
+        settingClosure.execute(
+            entryFactory.create()
         );
     }
     
@@ -105,10 +116,14 @@ exmp.blogpub.core.Controller = window; {
      * a HTTP request of Ajax for get the entry data.
      */
     exmp.blogpub.core.Controller._initializeEntryListDiv = function() {
+        
+        var entryListClosure = exmp.blogpub.functor.request.EntryListClosure;
+        var entryFactory = exmp.blogpub.functor.value.EntryFactory;
         var pageUrl = location.href;
+        
         if (!(pageUrl.indexOf("entry/form.html") == -1)) {
-            exmp.blogpub.functor.request.EntryListClosure.execute(
-                exmp.blogpub.functor.value.EntryFactory.create()
+            entryListClosure.execute(
+                entryFactory.create()
             );
         }
     }
@@ -131,30 +146,32 @@ exmp.blogpub.core.Controller = window; {
      */
     exmp.blogpub.core.Controller._initializeComponent = function() {
         
+        var controller = exmp.blogpub.core.Controller;
+        
         // calls for the initialization methods.
         
-        exmp.blogpub.core.Controller._initializeEntryListDiv();
+        controller._initializeEntryListDiv();
         
-        exmp.blogpub.core.Controller._initializeTabsDiv();
+        controller._initializeTabsDiv();
         
-        exmp.blogpub.core.Controller._initializeCategorySelect();
+        controller._initializeCategorySelect();
         
         // set the control's event handler.
         
         $("#post-button").click(function() {
-            exmp.blogpub.core.Controller._postButtonOnClick();
+            controller._postButtonOnClick();
         });
         
         $("#setting-button").click(function() {
-            exmp.blogpub.core.Controller._settingButtonOnClick();
+            controller._settingButtonOnClick();
         });
         
         $("#message-block").click(function() {
-            exmp.blogpub.core.Controller._messageDivOnClick();
+            controller._messageDivOnClick();
         });
         
         $("h4.entry-content-title").click(function() {
-            exmp.blogpub.core.Controller._entryContentTitleDivOnClick();
+            controller._entryContentTitleDivOnClick();
         });
     }
 }

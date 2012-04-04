@@ -32,7 +32,7 @@ exmp.blogpub.functor.request.EntryPostClosure = {
         
         var errorMessageClosure = exmp.blogpub.functor.dhtml.ErrorMessageClosure;
         
-        var viewHelper = exmp.blogpub.core.ViewHelper;
+        var entryListUpdateClosure = exmp.blogpub.functor.dhtml.EntryListUpdateClosure;
         
         // show the waiting message.
         waitingMessageClosure.execute({
@@ -49,7 +49,10 @@ exmp.blogpub.functor.request.EntryPostClosure = {
             
             // callback function of the success.
             success: function(data, dataType) {
+                
+                // if get a error from the response.
                 if (data.isError) {
+                    // show the error message.
                     errorMessageClosure.execute({
                         message: "application error occurred.."
                     });
@@ -57,13 +60,14 @@ exmp.blogpub.functor.request.EntryPostClosure = {
                 }
                 
                 // update the HTML table of the entry list.
-                viewHelper.updateEntryList(
+                entryListUpdateClosure.execute(
                     data
                 );
                 
                 $("#entry_title").val("");
                 $("#entry_content").val("");
                 
+                // show the success message.
                 successMessageClosure.execute({
                     message: "complete."
                 });
@@ -71,6 +75,8 @@ exmp.blogpub.functor.request.EntryPostClosure = {
             
             // callback function of the error.
             error: function(XMLHttpRequest, textStatus, errorThrown) {
+                
+                // show the error message.
                 errorMessageClosure.execute({
                     message: "httprequest error occurred.."
                 });

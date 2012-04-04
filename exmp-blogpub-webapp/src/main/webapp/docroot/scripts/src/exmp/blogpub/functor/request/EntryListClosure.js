@@ -30,7 +30,7 @@ exmp.blogpub.functor.request.EntryListClosure = {
         
         var errorMessageClosure = exmp.blogpub.functor.dhtml.ErrorMessageClosure;
         
-        var viewHelper = exmp.blogpub.core.ViewHelper;
+        var entryListUpdateClosure = exmp.blogpub.functor.dhtml.EntryListUpdateClosure;
         
         // show the waiting message.
         listWaitingClosure.execute(
@@ -59,7 +59,7 @@ exmp.blogpub.functor.request.EntryListClosure = {
                 }
                 
                 // update the HTML table of the entry list.
-                viewHelper.updateEntryList(
+                entryListUpdateClosure.execute(
                     data
                 );
             },

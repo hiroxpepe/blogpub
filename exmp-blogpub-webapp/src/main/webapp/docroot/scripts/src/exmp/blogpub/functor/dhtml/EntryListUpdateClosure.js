@@ -14,17 +14,17 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 /**
- * a viewhelper class of the application.
+ * a functor class of the application.
+ * update the HTML table of the entry list.
  * 
  * @author hiroxpepe
  */
-exmp.blogpub.core.ViewHelper = {
+exmp.blogpub.functor.dhtml.EntryListUpdateClosure = {
     
     ///////////////////////////////////////////////////////////////////////////
     // public methods
     
-    // update the HTML table of the entry list. 
-    updateEntryList: function(obj) {
+    execute: function(obj) {
         
         var transformer = exmp.blogpub.functor.htmltag.EntryListTransformer;
         

@@ -51,13 +51,17 @@ exmp.blogpub.functor.request.SettingClosure = {
             
             // callback function of the error.
             error: function(XMLHttpRequest, textStatus, errorThrown) {
+                
                 // because this Ajax requests are redirected as normal.
                 if (XMLHttpRequest.status == 200) {
+                    // show the success message.
                     successMessageClosure.execute({
                         message: "complete."
                     });
                     return;
                 }
+                
+                // show the error message.
                 errorMessageClosure.execute({
                     message: "httprequest error occurred.."
                 });
