@@ -23,12 +23,14 @@
     <!-- Apache Tiles configure -->
 
     <!-- declare the Apache Tiles configuration. -->
-    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+    <bean id="tilesConfigurer"
+        class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
         <property name="definitions" value="/WEB-INF/layouts/templates.xml" />
     </bean>
 
     <!-- declare the Apache Tiles view resolver. -->
-    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+    <bean id="tilesViewResolver"
+        class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
     </bean>
 

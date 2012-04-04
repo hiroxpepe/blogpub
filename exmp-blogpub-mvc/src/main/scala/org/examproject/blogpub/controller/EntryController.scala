@@ -23,34 +23,35 @@ import javax.servlet.http.HttpServletResponse
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.dozer.Mapper
-import org.dozer.MappingException
-import org.springframework.beans.BeansException
 import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.CookieValue
-import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 
 import org.examproject.blogpub.dto.EntryDto
 import org.examproject.blogpub.form.EntryForm
 import org.examproject.blogpub.service.EntryService
+import org.examproject.blogpub.response.AjaxResponse
 import org.examproject.blogpub.response.Entry
-import org.examproject.blogpub.response.Result
 
 import scala.collection.JavaConversions._
 
 /**
+ * the entry controller class of the application.
+ *
  * @author hiroxpepe
  */
 @Controller
 class EntryController {
     
-    private val LOG: Logger = LoggerFactory.getLogger(classOf[EntryController])
+    private val LOG: Logger = LoggerFactory.getLogger(
+        classOf[EntryController]
+    )
     
     @Inject
     private val context: ApplicationContext = null
@@ -64,6 +65,7 @@ class EntryController {
     ///////////////////////////////////////////////////////////////////////////
     // public methods
     
+    ///////////////////////////////////////////////////////////////////////////
     /**
      * entry form request.
      * expected HTTP request is '/entry/form.html'
@@ -89,10 +91,14 @@ class EntryController {
         author: String,
         model: Model
     ) = {
-        LOG.info("called");
+        LOG.info("called")
+             
+        // create a form-object.
+        val entryForm: EntryForm = context.getBean(
+            classOf[EntryForm]
+        )
         
-        // set the cookie value to the form object.
-        val entryForm: EntryForm = new EntryForm()
+        // set the cookie value to the form-object.
         entryForm.setUsername(username)
         entryForm.setPassword(password)
         entryForm.setBlog(blog)
@@ -100,9 +106,14 @@ class EntryController {
         entryForm.setScheme(scheme)
         entryForm.setFeedUrl(feedUrl)
         entryForm.setAuthor(author)
-        model.addAttribute(entryForm)
+        
+        // set the form-object to the model. 
+        model.addAttribute(
+            entryForm
+        )
     }
     
+    ///////////////////////////////////////////////////////////////////////////
     /**
      * post the entry.
      * expected Ajax HTTP request is '/entry/post.html'
@@ -118,43 +129,43 @@ class EntryController {
         entryForm: EntryForm,
         model: Model
     )
-    : Result = {
-        LOG.info("called");
+    : AjaxResponse = {
+        LOG.info("called")
         
-        // this is the return object 
-        // that will be returned to the HTML page.
-        var result: Result = null;
-        try {
-            // get the result object 
-            result = context.getBean(classOf[Result]);
+        // the response-object will be returned to the html page.
+        
+        // create a response-object.
+        val response: AjaxResponse = context.getBean(
+            classOf[AjaxResponse]
+        )
             
-            // map the DTO object using the form objects data.
-            val entryDto: EntryDto = mapEntryFormToEntryDto(entryForm)
+        // get the mapped dto-object using the form-object data.
+        val entryDto: EntryDto = getMappedEntry(
+            entryForm
+        )
             
-            // post the entry using the service object.
-            postEntry(entryDto)
+        // post the entry dto-object using the service-object.
+        postEntry(
+            entryDto
+        )
             
-            // get the list of entry from the service object.
-            val entryDtoList: List[EntryDto] = getEntryList(entryForm)
+        // get the list of dto-object from the service-object.
+        val entryDtoList: List[EntryDto] = getEntryList(
+            entryForm
+        )
             
-            // add to the result object.
-            addResultFromEntryDtoList(entryDtoList, result)
+        // add to the response-object.
+        addToResponse(
+            entryDtoList,
+            response
+        )
             
-            // return the result object to HTML page. 
-            // this will be converted into JSON.
-            return result
-            
-        } catch {
-            case e: Exception => {
-              LOG.error(e.getMessage())
-              
-              // notify the occurrence of errors to the HTML page.
-              result.setIsError(true)
-              return result
-            }
-        }
+        // return the response-object to html page. 
+        // this will be converted into json.
+        return response
     }
 
+    ///////////////////////////////////////////////////////////////////////////
     /**
      * get the entry list.
      * expected Ajax HTTP request is '/entry/list.html'
@@ -170,37 +181,33 @@ class EntryController {
         entryForm: EntryForm,
         model: Model
     )
-    : Result = {
-        LOG.info("called");
+    : AjaxResponse = {
+        LOG.info("called")
         
-        // this is the return object
-        // that will be returned to the HTML page.
-        var result: Result = null;
-        try {
-            // get the result object
-            result = context.getBean(classOf[Result])
+        // the response-object will be returned to the html page.
+        
+        // create a response-object.
+        val response: AjaxResponse = context.getBean(
+            classOf[AjaxResponse]
+        )
             
-            // get the list of entry from the service object.
-            val entryDtoList: List[EntryDto] = getEntryList(entryForm)
+        // get the mapped dto-object using the form-object data.
+        val entryDtoList: List[EntryDto] = getEntryList(
+            entryForm
+        )
             
-            // add to the result object.
-            addResultFromEntryDtoList(entryDtoList, result)
+        // add to the response-object.
+        addToResponse(
+            entryDtoList,
+            response
+        )
             
-            // return the result object to HTML page.
-            // this will be converted into JSON.
-            return result;
-            
-        } catch {
-            case e: Exception => {
-                LOG.error(e.getMessage())
-                
-                // notify the occurrence of errors to the HTML page.
-                result.setIsError(true)
-                return result;
-            }
-        }
+        // return the response-object to html page.
+        // this will be converted into json.
+        return response;
     }
     
+    ///////////////////////////////////////////////////////////////////////////
     /**
      * store the configuration data to the cookie.
      * expected Ajax HTTP request is '/entry/setting.html'
@@ -217,76 +224,150 @@ class EntryController {
     )
     : String = {
         LOG.info("called")
-        
-        try {
-            // store setting param to the cookie
-            storeToCookie(entryForm, response, 86400)
-            
-            // request a redirect to the entry/form page
-            return "redirect:/entry/form.html"
-            
-        } catch {
-            case e: Exception => {
-                LOG.error(e.getMessage());
-            }
-        }
-        return null;
+
+        // store the setting param to the cookie.
+        storeToCookie(
+            entryForm,
+            response,
+            604800
+        )
+
+        // redirect the request to the 'entry/form' page.
+        return "redirect:/entry/form.html"
     }
+    
+    ///////////////////////////////////////////////////////////////////////////
+    /**
+     * if an error is occured, this method will be called.
+     */
+    @ExceptionHandler
+    @ResponseBody
+    def handleException(
+        e: Exception
+    )
+    : AjaxResponse = {
+        LOG.info("called")
+        
+        LOG.error(e.getMessage())
+        
+        // create a response-object.
+        val response: AjaxResponse = context.getBean(
+            classOf[AjaxResponse]
+        )
+        
+        // notify the occurrence of errors to the html page.
+        response.setIsError(true)
+        return response;
+    } 
     
     ///////////////////////////////////////////////////////////////////////////
     // private methods
     
+    ///////////////////////////////////////////////////////////////////////////
     /**
-     * map the DTO object using the form objects data.
+     * map the dto-object using the form object-data.
      */
-    private def mapEntryFormToEntryDto(entryForm: EntryForm): EntryDto = {
+    private def getMappedEntry(
+        entryForm: EntryForm
+    )
+    : EntryDto = {
         LOG.debug("called");
         
-        val entryDto: EntryDto = context.getBean(classOf[EntryDto])
-        mapper.map(entryForm, entryDto)
+        // create a dto-object.
+        val entryDto: EntryDto = context.getBean(
+            classOf[EntryDto]
+        )
+        
+        // map the form-object to the dto-object.
+        mapper.map(
+            entryForm,
+            entryDto
+        )
+        
         return entryDto
     }
 
+    ///////////////////////////////////////////////////////////////////////////
     /**
-     * post the entry using the service object.
+     * post the dto-object of the entry using the service-object.
      */
-    private def postEntry(entryDto: EntryDto) {
+    private def postEntry(
+        entryDto: EntryDto
+    ) = {
         LOG.debug("called");
         
+        // save the dto-object.
         entryService.saveEntry(
             entryDto
         )
     }
 
+    ///////////////////////////////////////////////////////////////////////////
     /**
-     * get the list of entry from the service object.
+     * get the list of entry from the service-object.
      */
-    private def getEntryList(entryForm: EntryForm): List[EntryDto] = {
+    private def getEntryList(
+        entryForm: EntryForm
+    )
+    : List[EntryDto] = {
         LOG.debug("called");
         
+        // get the dto-object list from service-object.
         val rentryList: List[EntryDto] = entryService.findAllEntry(
             entryForm.getFeedUrl()
         )
+        
         return rentryList
     }
 
+    ///////////////////////////////////////////////////////////////////////////
     /**
-     * add to the result object.
+     * add to the response-object.
      */
-    private def addResultFromEntryDtoList(srcEntryList: List[EntryDto], result: Result) = {
+    private def addToResponse(
+        srcEntryList: List[EntryDto],
+        response: AjaxResponse
+    ) = {
         LOG.debug("called");
         
+        // create a list of entry object, 
+        // in order to send to the html page.
         val dstEntryList: List[Entry] = new ArrayList[Entry]()
+        
+        // process the entry object of all of the list.
         for (rentryDto: EntryDto <- srcEntryList) {
-            val entry: Entry = context.getBean(classOf[Entry])
-            entry.setTitle(rentryDto.getTitle())
-            entry.setContent(rentryDto.getContent())
-            dstEntryList.add(entry)
+            
+            // create a object to send to the html page.
+            val entry: Entry = context.getBean(
+                classOf[Entry]
+            )
+            
+            // set the value to the object.
+            entry.setTitle(
+                rentryDto.getTitle()
+            )
+            entry.setContent(
+                rentryDto.getContent()
+            )
+            
+            // add the object to the object list.
+            dstEntryList.add(
+                entry
+            )
         }
-        result.setEntryList(dstEntryList)
-        result.setIsError(false)
+        
+        // set the object list to response-object.
+        response.setEntryList(
+            dstEntryList
+        )
+        
+        // set the error status.
+        response.setIsError(
+            false
+        )
     }
     
+    ///////////////////////////////////////////////////////////////////////////
     /**
      * store the configuration data to the cookie.
      */
@@ -297,35 +378,54 @@ class EntryController {
     ) = {
         LOG.debug("called");
         
-        var cookie: Cookie = null
+        val username = new Cookie(
+            "__exmp_blogpub_username",
+            entryForm.getUsername()
+        )
+        username.setMaxAge(maxAge)
+        response.addCookie(username)
         
-        cookie = new Cookie("__exmp_blogpub_username", entryForm.getUsername())
-        cookie.setMaxAge(maxAge)
-        response.addCookie(cookie)
+        val password = new Cookie(
+            "__exmp_blogpub_password",
+            entryForm.getPassword()
+        )
+        password.setMaxAge(maxAge)
+        response.addCookie(password)
         
-        cookie = new Cookie("__exmp_blogpub_password", entryForm.getPassword())
-        cookie.setMaxAge(maxAge)
-        response.addCookie(cookie)
+        val blog = new Cookie(
+            "__exmp_blogpub_blog",
+            entryForm.getBlog()
+        )
+        blog.setMaxAge(maxAge)
+        response.addCookie(blog)
         
-        cookie = new Cookie("__exmp_blogpub_blog", entryForm.getBlog())
-        cookie.setMaxAge(maxAge)
-        response.addCookie(cookie)
+        val url = new Cookie(
+            "__exmp_blogpub_url",
+            entryForm.getUrl()
+        )
+        url.setMaxAge(maxAge)
+        response.addCookie(url)
         
-        cookie = new Cookie("__exmp_blogpub_url", entryForm.getUrl())
-        cookie.setMaxAge(maxAge)
-        response.addCookie(cookie)
+        val scheme = new Cookie(
+            "__exmp_blogpub_scheme",
+            entryForm.getScheme()
+        )
+        scheme.setMaxAge(maxAge)
+        response.addCookie(scheme)
         
-        cookie = new Cookie("__exmp_blogpub_scheme", entryForm.getScheme())
-        cookie.setMaxAge(maxAge)
-        response.addCookie(cookie)
+        val feedurl = new Cookie(
+            "__exmp_blogpub_feedurl",
+            entryForm.getFeedUrl()
+        )
+        feedurl.setMaxAge(maxAge)
+        response.addCookie(feedurl)
         
-        cookie = new Cookie("__exmp_blogpub_feedurl", entryForm.getFeedUrl())
-        cookie.setMaxAge(maxAge)
-        response.addCookie(cookie)
-        
-        cookie = new Cookie("__exmp_blogpub_author", entryForm.getAuthor())
-        cookie.setMaxAge(maxAge)
-        response.addCookie(cookie)
+        val author = new Cookie(
+            "__exmp_blogpub_author",
+            entryForm.getAuthor()
+        )
+        author.setMaxAge(maxAge)
+        response.addCookie(author)
     }
     
 }

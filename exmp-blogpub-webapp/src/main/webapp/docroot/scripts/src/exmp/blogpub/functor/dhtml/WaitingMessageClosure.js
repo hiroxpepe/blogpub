@@ -34,9 +34,9 @@ exmp.blogpub.functor.dhtml.WaitingMessageClosure = {
             .css({
                 margin: "1em",
                 padding: "0.25em",
-                color: "gray",
-                backgroundColor: "gainsboro",
-                border: "1px solid gray"
+                color: "silver",
+                backgroundColor: "lavender",
+                border: "1px solid silver"
             })
             .html(
                 '<p><img src="../docroot/images/loading.gif" ' +

@@ -39,13 +39,13 @@
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- response object -->
     
-    <bean id="responseEntry"
+    <bean id="entry"
         class="org.examproject.blogpub.response.Entry"
         scope="prototype">
     </bean>
  
-    <bean id="responseResult"
-        class="org.examproject.blogpub.response.Result"
+    <bean id="ajaxResponse"
+        class="org.examproject.blogpub.response.AjaxResponse"
         scope="prototype">
     </bean>
  

@@ -47,12 +47,22 @@ exmp.blogpub.functor.request.SettingClosure = {
             
             // callback function of the success.
             success: function(data, dataType) {
+                
+                // if get a error from the response.
+                if (data.isError) {
+                    // show the error message.
+                    errorMessageClosure.execute({
+                        message: "application error occurred.."
+                    });
+                    return;
+                }
             },
             
             // callback function of the error.
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 
-                // because this Ajax requests are redirected as normal.
+                // ** success in this class method. **
+                // because, this ajax requests are redirected as normal.
                 if (XMLHttpRequest.status == 200) {
                     // show the success message.
                     successMessageClosure.execute({

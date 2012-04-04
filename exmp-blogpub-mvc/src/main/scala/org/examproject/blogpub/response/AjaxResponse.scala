@@ -21,7 +21,7 @@ import reflect.BeanProperty
 /**
  * @author hiroxpepe
  */
-class Result(
+class AjaxResponse(
     
     @BeanProperty
     var entryList: List[Entry] = null,
