@@ -65,9 +65,9 @@ div.container {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-    div.container.wide {
+/*    div.container.wide {
         width: 950px;
-    }
+    }*/
 
 /* ****************************************************************************
  * define the header area of this application.
@@ -291,6 +291,7 @@ div.index-content {
 div.entry-content {
     margin: 1em 1em 1em 1em;
     padding: 0.25em 1em 1em 1em;
+    background: white;
     border: 1px solid silver;
     border-radius: 5px;
 }

@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>org.examproject</groupId>
-    <artifactId>blogpub-examproject</artifactId>
+    <artifactId>blogpub</artifactId>
     <packaging>pom</packaging>
     <version>0.1.0-SNAPSHOT</version>
-    <name>blogpub-examproject</name>
+    <name>blogpub</name>
     
     <properties>
         <java.version>1.6</java.version>

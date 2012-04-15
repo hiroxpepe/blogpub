@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
         
-<div class="entry-content">
+<div id="entry-content-wrapper" class="entry-content ui-widget-content">
     
     <h4 class="entry-content-title">
         <fmt:message key="label.entry" />

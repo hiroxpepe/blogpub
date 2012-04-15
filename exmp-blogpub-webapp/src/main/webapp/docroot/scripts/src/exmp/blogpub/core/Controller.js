@@ -85,10 +85,10 @@ exmp.blogpub.core.Controller = window; {
      * the div of entry tirle is clicked.
      */
     exmp.blogpub.core.Controller._entryContentTitleDivOnClick = function() {
-        $("div.container")
-            .toggleClass(
-                "wide", 300
-            );
+//        $("div.container")
+//            .toggleClass(
+//                "wide", 300
+//            );
     }
     
     ///////////////////////////////////////////////////////////////////////////
@@ -173,5 +173,9 @@ exmp.blogpub.core.Controller = window; {
         $("h4.entry-content-title").click(function() {
             controller._entryContentTitleDivOnClick();
         });
+        
+        // and, do a some initialize.
+        $("#entry-content-wrapper").draggable();
+        $("#entry-content-wrapper").resizable();
     }
 }
