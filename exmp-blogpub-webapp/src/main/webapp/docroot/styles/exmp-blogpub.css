@@ -298,9 +298,11 @@ div.entry-content {
     h4.entry-content-title {
         margin-bottom: 0.5em;
         cursor: pointer;
+        background: white;
     }
     table.entry-table {
         width: 100%;
+        background: white;
     }
         table.entry-table td.label-td {
             width: 10%;
@@ -312,6 +314,7 @@ div.entry-content {
     div.entry-command-block {
         padding: 0.5em 0 0.5em 0;
         text-align: right;
+        background: white;
     }
 
 /* ****************************************************************************
