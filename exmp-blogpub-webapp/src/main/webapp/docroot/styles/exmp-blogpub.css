@@ -367,8 +367,8 @@ div.entry-list-content {
  * define the appearance of the tab block.
  */
 div.tab-content {
-    padding: 0.25em 1em 0.25em 1em;
-	font-size: 90%;
+    padding: 1.25em 1em 1.25em 1em;
+    font-size: 90%;
 }
     div.tab-content ul {
         float: left;

@@ -174,8 +174,9 @@ exmp.blogpub.core.Controller = window; {
             controller._entryContentTitleDivOnClick();
         });
         
-        // and, do a some initialize.
-        $("#entry-content-wrapper").draggable();
-        $("#entry-content-wrapper").resizable();
+        // and do a some initialize.        
+        $("#entry-content-wrapper").dialog({
+            width: 640
+        });
     }
 }
