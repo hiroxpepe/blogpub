@@ -51,6 +51,9 @@ class EntryForm(
     var author: String = "",
     
     @BeanProperty
+    var email: String = "",
+    
+    @BeanProperty
     var title: String = "",
     
     @BeanProperty
@@ -63,5 +66,5 @@ class EntryForm(
     var tags: String = ""
     
 ) {
-    def this() = this(0, "", "", "", "", "", "", "", "", "", "", "")
+    def this() = this(0, "", "", "", "", "", "", "", "", "", "", "", "")
 }

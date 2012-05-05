@@ -32,7 +32,7 @@ exmp.blogpub.functor.dhtml.WaitingMessageClosure = {
                 "show"
             )
             .css({
-                margin: "1em",
+                margin: "1em 0.25em 1em 0.25em",
                 padding: "0.25em",
                 color: "silver",
                 backgroundColor: "lavender",

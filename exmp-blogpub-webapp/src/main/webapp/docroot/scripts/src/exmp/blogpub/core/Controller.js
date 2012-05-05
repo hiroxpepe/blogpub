@@ -18,7 +18,7 @@
  * 
  * @author hiroxpepe
  */
-exmp.blogpub.core.Controller = window; {
+exmp.blogpub.core.Controller = window;{
     
     ///////////////////////////////////////////////////////////////////////////
     // public methods
@@ -117,9 +117,15 @@ exmp.blogpub.core.Controller = window; {
      */
     exmp.blogpub.core.Controller._initializeEntryListDiv = function() {
         
+        var profileUpdateClosure = exmp.blogpub.functor.dhtml.ProfileUpdateClosure;
         var entryListClosure = exmp.blogpub.functor.request.EntryListClosure;
         var entryFactory = exmp.blogpub.functor.value.EntryFactory;
         var pageUrl = location.href;
+        
+        profileUpdateClosure.execute({
+            username: $("#entry_username").val(),
+            email: $("#entry_email").val()
+        });
         
         if (!(pageUrl.indexOf("entry/form.html") == -1)) {
             entryListClosure.execute(
@@ -172,11 +178,6 @@ exmp.blogpub.core.Controller = window; {
         
         $("h4.entry-content-title").click(function() {
             controller._entryContentTitleDivOnClick();
-        });
-        
-        // and do a some initialize.        
-        $("#entry-content-wrapper").dialog({
-            width: 640
         });
     }
 }

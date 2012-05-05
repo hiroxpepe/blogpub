@@ -89,6 +89,16 @@
                         <form:input id="entry_author" path="author" />
                     </td>
                 </tr>
+                <tr>
+                    <td class="label-td">
+                        <label for="entry_email">
+                            <fmt:message key="entry.form.email" />
+                        </label>
+                    </td>
+                    <td class="input-td">
+                        <form:input id="entry_email" path="email" />
+                    </td>
+                </tr>
             </table>
             <div class="setting-command-block">
                 <input id="setting-button"

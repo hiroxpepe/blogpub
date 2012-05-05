@@ -32,7 +32,7 @@ exmp.blogpub.functor.dhtml.ErrorMessageClosure = {
                 "show"
             )
             .css({
-                margin: "1em",
+                margin: "1em 0.25em 1em 0.25em",
                 padding: "0.25em",
                 color: "red",
                 backgroundColor: "pink",

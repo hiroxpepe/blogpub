@@ -89,6 +89,8 @@ class EntryController {
         feedUrl: String,
         @CookieValue(value="__exmp_blogpub_author", defaultValue="")
         author: String,
+        @CookieValue(value="__exmp_blogpub_email", defaultValue="")
+        email: String,
         model: Model
     ) = {
         LOG.info("called")
@@ -106,6 +108,7 @@ class EntryController {
         entryForm.setScheme(scheme)
         entryForm.setFeedUrl(feedUrl)
         entryForm.setAuthor(author)
+        entryForm.setEmail(email)
         
         // set the form-object to the model. 
         model.addAttribute(
@@ -426,6 +429,13 @@ class EntryController {
         )
         author.setMaxAge(maxAge)
         response.addCookie(author)
+        
+        val email = new Cookie(
+            "__exmp_blogpub_email",
+            entryForm.getEmail()
+        )
+        email.setMaxAge(maxAge)
+        response.addCookie(email)
     }
     
 }

@@ -13,8 +13,8 @@
         <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/jquery-ui.custom.min.js"/>"></script>
         <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/jquery.json.js"/>"></script>
         <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/jquery.escapeHTML.js"/>"></script>
+        <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/md5.js"/>"></script>
         <script language="javascript" type="text/javascript" src="<c:url value="/docroot/scripts/exmp-blogpub.min.js"/>"></script>
-        
         <title><fmt:message key="site.title" /></title>
     </head>
     <body>

@@ -60,8 +60,8 @@ div.container {
     margin-left: auto;
     margin-right: auto;
     background-color: lavender;
-    border-left: 1px solid silver;
-    border-right: 1px solid silver;
+    border-left: 1px solid gainsboro;
+    border-right: 1px solid gainsboro;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -76,10 +76,11 @@ div.container {
  */
 div.header {
     width: 100%;
-    height: 8em;
+    height: 5em;
     text-align: left;
     color: white;
-    background: lightslategray;
+    background: #777799;
+    border-bottom: 1px solid gainsboro;
 }
 
 /* ****************************************************************************
@@ -97,7 +98,7 @@ div.menu {
  * define the content area of this application.
  */
 div.content {
-    width: 75%;
+    width: 70%;
     min-height: 720px;
     height: auto;
     float: left;
@@ -109,7 +110,7 @@ div.content {
  * define the sidebar area of this application.
  */
 div.sidebar {
-    width: 25%;
+    width: 30%;
     min-height: 720px;
     height: auto;
     float: right;
@@ -127,7 +128,8 @@ div.footer {
     text-align: right;
     font-size: 90%;
     color: white;
-    background: lightslategray;
+    background: #777799;
+    border-top: 1px solid gainsboro;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -153,9 +155,21 @@ div.block {
  * define the appearance of the header content.
  */
 div.header-content {
+    padding-top: 1em;
 }
-    h1.header-title {
-        margin-top: 0.5em;
+    span.header-logo {
+        margin-right: 0.25em;
+    }
+        span.header-logo img {
+            border: 1px solid #aaaabb;
+            border-radius: 4px;
+        }
+    span.header-title {
+        font-size: xx-large;
+        font-weight: bold;
+    }
+    span.header-sub-title {
+        font-size: 60%;
     }
 
 /* ****************************************************************************
@@ -164,6 +178,7 @@ div.header-content {
 div.menu-content {
 }
     div.menu-bar {
+        height: 1.55em;
     }
         div.menu-bar a {
             margin-right: 0.25em;
@@ -186,6 +201,15 @@ div.menu-content {
             background: gray;
             border-radius: 2px;
         }
+            div.menu-bar-left {
+                float: left;
+            }
+            div.menu-bar-right {
+                float: right;
+            }
+                div.menu-bar-right img {
+                    padding-top: 0.15em;
+                }
 
 /* ****************************************************************************
  * define the appearance of the sidebar content.
@@ -194,18 +218,13 @@ div.sidebar-content {
     padding-top: 1em;
 }
     div.sidebar-content a {
-        margin-top: 7pt;
-        margin-right: 0pt;
-        margin-bottom: 7pt;
-        margin-left: 0pt;
-        padding-top: 2pt;
-        padding-right: 2pt;
-        padding-bottom: 2pt;
-        padding-left: 2pt;
+        margin: 1.25em 0.25em 0.25em 0.25em;
+        padding: 0.25em;
         display: block;
         text-decoration: none;
+        text-align: center;
         color: white;
-        background: lightslategray;
+        background: #777799;
         border: 1px solid #aaaaaa;
         border-radius: 3px;
     }
@@ -215,13 +234,6 @@ div.sidebar-content {
             border: 1px solid #d2b48c;
             border-radius: 3px;
         }
-    div.sidebar-content p {
-        margin-top: 0.25em;
-        background-color: transparent;
-        border-width: 1px 0px 1px 0px;
-        border-style: solid solid solid solid;
-        border-color: silver transparent silver transparent;
-    }
 
 /* ****************************************************************************
  * define the appearance of the footer content.
@@ -255,7 +267,7 @@ input.command-button {
     height: 25px;
     cursor: pointer;
     color: white;
-    background: lightslategray;
+    background: #777799;
     border: 1px solid #aaaaaa;
     border-radius: 4px;
 }
@@ -274,7 +286,11 @@ input.command-button {
  * define the appearance of the index content.
  */
 div.index-content {
-    padding-top: 1em;
+    margin: 1.25em 4em 3em 4em;
+    padding: 3em 1em 3em 1em;
+    text-align: center;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
 }
     h1.index-title {
         margin-top: 0.5em;
@@ -283,18 +299,24 @@ div.index-content {
     p.index-description {
         margin-top: 1em;
         padding: 1em 2em 2em 1em;
+        font-size: 80%;
+        color: #777799;
     }
 
 /* ****************************************************************************
  * define the appearance of the entry content.
  */
 div.entry-content {
-    margin: 1em 1em 1em 1em;
+    margin: 1em 0.25em 0.25em 0.25em;
     padding: 0.25em 1em 1em 1em;
     background: white;
-    border: 1px solid silver;
+    border: 1px solid gainsboro;
     border-radius: 5px;
 }
+    div.entry-content input, textarea, select {
+        border: 1px solid gainsboro;
+        border-radius: 3px;
+    }
     h4.entry-content-title {
         margin-bottom: 0.5em;
         cursor: pointer;
@@ -309,7 +331,7 @@ div.entry-content {
             padding: 0 0.5em 0 0;
             vertical-align: top;
             text-align: right;
-            color: lightslategray;
+            color: #777799;
         }
     div.entry-command-block {
         padding: 0.5em 0 0.5em 0;
@@ -323,6 +345,10 @@ div.entry-content {
 div.setting-content {
     padding: 1em;
 }
+    div.setting-content input {
+        border: 1px solid gainsboro;
+        border-radius: 3px;
+    }
     table.setting-table {
         width: 100%;
     }
@@ -343,7 +369,7 @@ div.setting-content {
  * define the appearance of the entry list table.
  */
 div.entry-list-content {
-    padding: 1em;
+    padding: 1em 1em 1.5em 1em;
     text-align:center;
     position:relative;
 }
@@ -367,7 +393,7 @@ div.entry-list-content {
  * define the appearance of the tab block.
  */
 div.tab-content {
-    padding: 1.25em 1em 1.25em 1em;
+    padding: 1.25em 0.25em 1.25em 0.25em;
     font-size: 90%;
 }
     div.tab-content ul {
@@ -403,6 +429,27 @@ div.tab-content {
         background: lightyellow;
         border: 1px solid wheat;
         border-radius: 5px;
+    }
+    
+/* ****************************************************************************
+ * define the appearance of the profile.
+ */
+ div.profile-content {
+    margin: 0.25em 0.25em 0.25em 0.25em;
+    padding: 0.25em;
+    background: white;
+    border: 1px solid gainsboro;
+    border-radius: 6px;
+ }
+    div.profile-content table td {
+        padding: 0.25em;
+        vertical-align: top;
+    }
+    div.profile-content table td div.profileName {
+        font-size: small;
+    }
+    div.profile-content img {
+        border-radius: 4px;
     }
     
 /* ****************************************************************************
