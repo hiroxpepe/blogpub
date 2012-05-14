@@ -5,9 +5,6 @@
 <div class="block sidebar-content">
     <%-- insert the profile content --%>
     <tiles:insertTemplate 
-        template="/WEB-INF/views/_profile.jsp"
+        template="/WEB-INF/views/sidebar/_profile.jsp"
     />
-    <a href="<c:url value="/entry/form.html" />">
-        <fmt:message key="button.entry" />
-    </a>
 </div>

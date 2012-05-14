@@ -15,12 +15,12 @@
         
         <%-- insert the entry content template. --%>
         <tiles:insertTemplate 
-            template="/WEB-INF/views/entry/_entryContent.jsp"
+            template="/WEB-INF/views/content/_entryContent.jsp"
         />
         
         <%-- insert the tab content template. --%>
         <tiles:insertTemplate 
-            template="/WEB-INF/views/entry/_tabContent.jsp"
+            template="/WEB-INF/views/content/_tabContent.jsp"
         />
         
     </form:form>

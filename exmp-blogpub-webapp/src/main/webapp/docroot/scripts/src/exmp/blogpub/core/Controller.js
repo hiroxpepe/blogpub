@@ -82,9 +82,9 @@ exmp.blogpub.core.Controller = window;{
     
     /**
      * an event handler that called when
-     * the div of entry tirle is clicked.
+     * the div of tirle is clicked.
      */
-    exmp.blogpub.core.Controller._entryContentTitleDivOnClick = function() {
+    exmp.blogpub.core.Controller._headerTitleDivOnClick  = function() {
         $("div.container")
             .toggleClass(
                 "wide", 300
@@ -101,7 +101,7 @@ exmp.blogpub.core.Controller = window;{
         $("div.tab-content div.tab").hide();
         $("div.tab-content div.tab:first").show();
         $("div.tab-content ul li:first").addClass("active");
-        $("div.tab-content ul li a").click(function(){
+        $("div.tab-content ul li a").click(function() {
             $("div.tab-content ul li").removeClass("active");
             $(this).parent().addClass("active");
             var currentTab = $(this).attr("href");
@@ -176,8 +176,8 @@ exmp.blogpub.core.Controller = window;{
             controller._messageDivOnClick();
         });
         
-        $("h4.entry-content-title").click(function() {
-            controller._entryContentTitleDivOnClick();
+        $("span.header-title").click(function() {
+            controller._headerTitleDivOnClick();
         });
     }
 }

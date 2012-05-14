@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div class="block footer-content">
+<div class="block footer-content">    
     <div>
         <fmt:message key="button.locale" />:
         <c:url var="englishLocaleUrl" value="/index.html">

@@ -64,6 +64,7 @@ div.container {
     border-right: 1px solid gainsboro;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    box-shadow: 0 0 4px 0 gainsboro;
 }
     div.container.wide {
         width: 950px;
@@ -165,6 +166,7 @@ div.header-content {
             border-radius: 4px;
         }
     span.header-title {
+        cursor: pointer;
         font-size: xx-large;
         font-weight: bold;
     }
@@ -276,6 +278,7 @@ input.command-button {
         background: darkgray;
         border: 1px solid #d2b48c;
         border-radius: 4px;
+        box-shadow: 0 0 4px 0 gainsboro;
     }
 
 /* ****************************************************************************
@@ -291,6 +294,7 @@ div.index-content {
     text-align: center;
     border: 1px solid gainsboro;
     border-radius: 5px;
+    box-shadow: 0 0 4px 0 gainsboro;
 }
     h1.index-title {
         margin-top: 0.5em;
@@ -312,6 +316,7 @@ div.entry-content {
     background: white;
     border: 1px solid gainsboro;
     border-radius: 5px;
+    box-shadow: 0 0 2px 0 gainsboro;
 }
     div.entry-content input, textarea, select {
         border: 1px solid gainsboro;
@@ -319,7 +324,6 @@ div.entry-content {
     }
     h4.entry-content-title {
         margin-bottom: 0.5em;
-        cursor: pointer;
         background: white;
     }
     table.entry-table {
@@ -413,6 +417,7 @@ div.tab-content {
         border-left: 1px solid wheat;
         border-right: 1px solid wheat;
         border-radius: 5px 5px 0px 0px;
+        box-shadow: 0 0 2px 0 wheat;
     }
     div.tab-content ul li.active a {
         color: #333333;
@@ -429,6 +434,7 @@ div.tab-content {
         background: lightyellow;
         border: 1px solid wheat;
         border-radius: 5px;
+        box-shadow: 0 0 2px 0 wheat;
     }
     
 /* ****************************************************************************
@@ -440,12 +446,14 @@ div.tab-content {
     background: white;
     border: 1px solid gainsboro;
     border-radius: 6px;
+    box-shadow: 0 0 1px 0 lightsteelblue;
  }
     div.profile-content table td {
         padding: 0.25em;
         vertical-align: top;
     }
     div.profile-content table td div.profileName {
+        color: #4d4d4d;
         font-size: small;
     }
     div.profile-content img {
@@ -461,6 +469,7 @@ div.tab-content {
         min-height: 50px;
         text-align: right;
         border-radius: 5px;
+        box-shadow: 0 0 4px 0 gainsboro;
     }
     #message-block img {
         cursor: pointer;

@@ -28,7 +28,7 @@
 
     <!-- contents of the "content" you access http://[your domain]/entry/form.html -->
     <definition name="entry/form" extends="main-template">
-        <put-attribute name="content" value="/WEB-INF/views/entry/form.jsp" />
+        <put-attribute name="content" value="/WEB-INF/views/content/form.jsp" />
     </definition>
 
 </tiles-definitions>
